@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import GithubContext from "../context/github/GithubContext";
 import Spinner from "../components/layout/Spinner";
 import CountUp from "react-countup";
-import { FaSearch } from "react-icons/fa";
 
 const User = () => {
   const { login } = useParams();
@@ -11,7 +10,7 @@ const User = () => {
 
   useEffect(() => {
     getUser(login);
-  }, [login]);
+  }, [login, getUser]);
 
   if (loading) return <Spinner />;
   return (
