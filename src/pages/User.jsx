@@ -10,7 +10,8 @@ const User = () => {
 
   useEffect(() => {
     getUser(login);
-  }, [login, getUser]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [login]);
 
   if (loading) return <Spinner />;
   return (
