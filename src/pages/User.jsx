@@ -2,16 +2,19 @@ import { useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
 import GithubContext from "../context/github/GithubContext";
 import Spinner from "../components/layout/Spinner";
+import RepoList from "../components/repo/RepoList";
 import CountUp from "react-countup";
 import { FaUsers, FaUserFriends, FaCodepen, FaStore } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const User = () => {
   const { login } = useParams();
-  const { getUser, loading, user } = useContext(GithubContext);
+  const { getUser, loading, user, getUserRepos, repos } =
+    useContext(GithubContext);
 
   useEffect(() => {
     getUser(login);
+    getUserRepos(login);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [login]);
 
@@ -33,7 +36,7 @@ const User = () => {
             <h1 className="text-2xl font-bold text-purple-900 text-center">
               {user.name || user.login}
             </h1>
-            <p className="text-green-600">{user.type}</p>
+            <p className="text-green-600 text-center">{user.type}</p>
             {user.bio && (
               <p className="mt-2 text-gray-700 italic">{user.bio}</p>
             )}
@@ -128,6 +131,9 @@ const User = () => {
             <CountUp end={user.public_gists} duration={1.5} separator="," />
           </p>
         </div>
+      </div>
+      <div className="my-4">
+        <RepoList repos={repos} />
       </div>
 
       <div className="mt-6 text-center">
