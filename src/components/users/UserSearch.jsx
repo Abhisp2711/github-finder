@@ -25,7 +25,7 @@ function UserSearch({ onSearch }) {
       initial={{ y: 0 }}
       animate={{ y: users.length > 0 ? -50 : 0 }} // move up if users present
       transition={{ duration: 0.5 }}
-      className={`grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-4 mt-4`}
+      className={`grid grid-cols-1 xl:grid-cols-[3fr_1fr] md:grid-cols-[2fr_1fr] gap-4 mt-4`}
     >
       <div>
         <form onSubmit={handleSubmit}>
