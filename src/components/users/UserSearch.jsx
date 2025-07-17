@@ -1,14 +1,16 @@
 import { useState, useContext } from "react";
 import GithubContext from "../../context/github/GithubContext";
+import AlertContext from "../../context/alert/AlertContext";
 
 function UserSearch() {
   const [text, setText] = useState("");
   const { users, searchUser, clearUser } = useContext(GithubContext);
+  const { setAlert } = useContext(AlertContext);
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (text === "") {
-      alert("please Enter something");
+      setAlert("Please Enter Something", "error");
     } else {
       searchUser(text);
 
@@ -16,7 +18,7 @@ function UserSearch() {
     }
   };
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 my-8 gap-4">
+    <div className="grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2  gap-4">
       <div>
         <form onSubmit={handleSubmit}>
           <div className="form-control">

@@ -17,7 +17,7 @@ export default function UserItems({ user: { login, avatar_url } }) {
         <div>
           <h2 className="text-xl">{login}</h2>
           <Link
-            to={`/users/${login}`}
+            to={`/user/${login}`}
             title={`Go to ${login}'s profile`}
             className="text-sm hover:text-purple-800 transition-all duration-150"
           >
