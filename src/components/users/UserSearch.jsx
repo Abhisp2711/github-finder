@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import GithubContext from "../../context/github/GithubContext";
 import AlertContext from "../../context/alert/AlertContext";
+import { motion } from "framer-motion";
 
-function UserSearch() {
+function UserSearch({ onSearch }) {
   const [text, setText] = useState("");
   const { users, searchUser, clearUser } = useContext(GithubContext);
   const { setAlert } = useContext(AlertContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -13,15 +15,17 @@ function UserSearch() {
       setAlert("Please Enter Something", "error");
     } else {
       searchUser(text);
-
+      onSearch();
       setText("");
     }
   };
+
   return (
-    <div
-      className={`grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-4 transition-all duration-300 ${
-        users.length > 0 ? "mt-10" : "mt-4"
-      }`}
+    <motion.div
+      initial={{ y: 0 }}
+      animate={{ y: users.length > 0 ? -50 : 0 }} // move up if users present
+      transition={{ duration: 0.5 }}
+      className={`grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-4 mt-4`}
     >
       <div>
         <form onSubmit={handleSubmit}>
@@ -29,7 +33,7 @@ function UserSearch() {
             <div className="relative">
               <input
                 type="text"
-                className="w-full bg-gray-600 rounded p-2 text-black placeholder:text-white placeholder:italic focus:outline-pink-900 "
+                className="w-full bg-gray-600 rounded p-2 text-black placeholder:text-white placeholder:italic focus:outline-pink-900"
                 placeholder="Search"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
@@ -44,6 +48,7 @@ function UserSearch() {
           </div>
         </form>
       </div>
+
       <div>
         {users.length > 0 && (
           <>
@@ -53,13 +58,18 @@ function UserSearch() {
             >
               Clear
             </button>
-            <div className="italic text-purple-600 ">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="italic text-purple-600"
+            >
               <p>Search Items : {users.length}</p>
-            </div>
+            </motion.div>
           </>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
