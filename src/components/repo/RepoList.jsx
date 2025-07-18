@@ -1,3 +1,5 @@
+import RepoItem from "./RepoItem";
+
 function RepoList({ repos }) {
   if (!repos || repos.length === 0) {
     return (
@@ -14,16 +16,7 @@ function RepoList({ repos }) {
       </h1>
       <ul className="list-decimal list-inside text-gray-800 space-y-2">
         {repos.map((repo, index) => (
-          <li key={repo.id || index} className="ml-2">
-            <a
-              href={repo.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:text-pink-500 transition-all duration-75"
-            >
-              {repo.name}
-            </a>
-          </li>
+          <RepoItem repo={repo} />
         ))}
       </ul>
     </div>
