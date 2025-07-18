@@ -15,8 +15,8 @@ function RepoList({ repos }) {
         Latest Repositories
       </h1>
       <ul className="list-decimal list-inside text-gray-800 space-y-2">
-        {repos.map((repo, index) => (
-          <RepoItem repo={repo} />
+        {repos.map((repo) => (
+          <RepoItem key={repo.id} repo={repo} />
         ))}
       </ul>
     </div>
