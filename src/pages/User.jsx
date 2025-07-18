@@ -6,17 +6,24 @@ import RepoList from "../components/repo/RepoList";
 import CountUp from "react-countup";
 import { FaUsers, FaUserFriends, FaCodepen, FaStore } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { getUser, getUserRepos } from "../context/github/GithubActions";
 
 const User = () => {
   const { login } = useParams();
-  const { getUser, loading, user, getUserRepos, repos } =
-    useContext(GithubContext);
+  const { loading, user, repos, dispatch } = useContext(GithubContext);
 
   useEffect(() => {
-    getUser(login);
-    getUserRepos(login);
+    dispatch({ type: "SET_LOADING" });
+    const getUserData = async () => {
+      const userData = await getUser(login);
+      dispatch({ type: "GET_USER", payload: userData });
+
+      const userRepos = await getUserRepos(login);
+      dispatch({ type: "GET_REPOS", payload: userRepos });
+    };
+    getUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [login]);
+  }, [login, dispatch]);
 
   if (loading) return <Spinner />;
   return (
@@ -38,7 +45,7 @@ const User = () => {
             </h1>
             <p className="text-green-600 text-center">{user.type}</p>
             {user.bio && (
-              <p className="mt-2 text-gray-700 italic">{user.bio}</p>
+              <p className="mt-2 text-pink-300  italic">{user.bio}</p>
             )}
 
             <div className="mt-4 space-y-2 text-purple-900">
