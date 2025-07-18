@@ -12,29 +12,37 @@ function RepoItem({ repo }) {
       <p className="mt-2 p-2">{repo.description}</p>
       <div className="flex flex-wrap gap-2 mt-2 ">
         <div className="flex  items-center justify-center">
-          <Badge>
-            <FaEye className="mr-1 hover:scale-110 transition-all duration-75 cursor-pointer " />
-            {repo.watchers_count}
-          </Badge>
+          <div className="hover:scale-105 transition-all duration-75 cursor-pointer">
+            <Badge>
+              <FaEye className="mr-1  " />
+              {repo.watchers_count}
+            </Badge>
+          </div>
         </div>
 
         <div className="flex  items-center justify-center">
-          <Badge variant="secondary ">
-            <FaStar className="mr-1 hover:scale-110 transition-all duration-75 cursor-pointer " />
-            {repo.stargazers_count}
-          </Badge>
+          <div className="hover:scale-105 transition-all duration-75 cursor-pointer">
+            <Badge variant="secondary ">
+              <FaStar className="mr-1  " />
+              {repo.stargazers_count}
+            </Badge>
+          </div>
         </div>
         <div className="flex  items-center justify-center">
-          <Badge variant="warning">
-            <FaInfo className="mr-1 hover:scale-110 transition-all duration-75 cursor-pointer " />
-            {repo.open_issues}
-          </Badge>
+          <div className="hover:scale-110 transition-all duration-75 cursor-pointer">
+            <Badge variant="warning">
+              <FaInfo className="mr-1  " />
+              {repo.open_issues}
+            </Badge>
+          </div>
         </div>
         <div className="flex  items-center justify-center">
-          <Badge variant="error">
-            <FaUtensils className="mr-1 hover:scale-110 transition-all duration-75 cursor-pointer " />
-            {repo.forks}
-          </Badge>
+          <div className="hover:scale-110 transition-all duration-75 cursor-pointer ">
+            <Badge variant="error">
+              <FaUtensils className="mr-1 " />
+              {repo.forks}
+            </Badge>
+          </div>
         </div>
       </div>
     </div>
