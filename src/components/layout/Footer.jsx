@@ -26,14 +26,26 @@ export default function Footer() {
           </Link>
         </div>
         <div className="flex gap-4 text-xl">
-          <a href="https://github.com" target="_blank" rel="noreferrer">
-            <FaGithub />
+          <a
+            href="https://github.com/Abhisp2711"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaGithub className="hover:text-black transition-all duration-75" />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noreferrer">
-            <FaTwitter />
+          <a
+            href="https://x.com/Abhishe89589129?t=9oWZhOVnS1gGomkrwH0CBA&s=09"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaTwitter className="hover:text-[#1DA1F2] transition-all duration-75" />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-            <FaLinkedin />
+          <a
+            href="https://www.linkedin.com/in/abhishek-kumar-singh-881670299/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedin className="hover:text-[#0077B5] transition-all duration-75" />
           </a>
         </div>
       </div>

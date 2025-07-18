@@ -29,7 +29,7 @@ function UserSearch({ onSearch }) {
       initial={{ y: 0 }}
       animate={{ y: users.length > 0 ? -50 : 0 }} // move up if users present
       transition={{ duration: 0.5 }}
-      className={`grid grid-cols-1 xl:grid-cols-[3fr_1fr] md:grid-cols-[2fr_1fr] gap-4 mt-4`}
+      className="grid grid-cols-1 xl:grid-cols-[3fr_1fr] md:grid-cols-[2fr_1fr] gap-4 mt-4"
     >
       <div>
         <form onSubmit={handleSubmit}>
@@ -37,7 +37,7 @@ function UserSearch({ onSearch }) {
             <div className="relative">
               <input
                 type="text"
-                className="w-full bg-gray-600 rounded p-2 text-black placeholder:text-white placeholder:italic focus:outline-pink-900"
+                className="w-full bg-gray-600  rounded p-2 text-pink-200 font-[400] placeholder:text-white placeholder:italic focus:outline-pink-900"
                 placeholder="Search"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
